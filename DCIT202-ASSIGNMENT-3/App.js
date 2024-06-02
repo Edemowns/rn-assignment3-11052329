@@ -53,9 +53,17 @@ const App = () => {
         <Text style={styles.categoriesText}>Categories</Text>
         <View style={styles.imageRow}>
           <View style={styles.imageBox}>
+            <View style={styles.overlayText}>
+              <Text style={styles.boldText}>Exercise</Text>
+              <Text style={styles.subText}>12 tasks</Text>
+            </View>
             <Image source={categories[0].icon} style={styles.fullScreenImage} resizeMode="contain" />
           </View>
           <View style={styles.imageBox}>
+            <View style={styles.overlayText}>
+              <Text style={styles.boldText}>Study</Text>
+              <Text style={styles.subText}>12 tasks</Text>
+            </View>
             <Image source={categories[1].icon} style={styles.fullScreenImage} resizeMode="contain" />
           </View>
         </View>
@@ -172,12 +180,28 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'relative', 
   },
   fullScreenImage: {
     width: '100%',
     height: undefined,
     aspectRatio: 1,
     borderRadius: 10,
+  },
+  overlayText: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    padding: 5,
+    borderRadius: 5,
+  },
+  boldText: {
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  subText: {
+    fontSize: 14,
   },
 });
 
