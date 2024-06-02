@@ -2,7 +2,19 @@ import React from 'react';
 import { StyleSheet, View, ScrollView, FlatList, Text, Image, TextInput } from 'react-native';
 import TaskList from './components/TaskList';
 
-const categories = ['Exercise', 'Study', 'Code', 'Cook', 'Read', 'Travel', 'Meditate', 'Sleep'];
+const categories = [
+  { id: '1', name: 'Exercise', icon: require('./assets/young woman working online.png') },
+  { id: '2', name: 'Study', icon: require('./assets/young woman working at desk.png') },
+  { id: '3', name: 'Run' },
+  { id: '4', name: 'Fight' },
+  { id: '5', name: 'Code' },
+  { id: '6', name: 'Cook' },
+  { id: '7', name: 'Read' },
+  { id: '8', name: 'Travel' },
+  { id: '9', name: 'Meditate' },
+  { id: '10', name: 'Sleep' },
+];
+
 const tasks = [
   { id: '1', task: 'Run 5 miles', category: 'Exercise' },
   { id: '2', task: 'Finish reading book', category: 'Read' },
@@ -27,31 +39,39 @@ const App = () => {
       <ScrollView>
         <View style={styles.headerContainer}>
           <Text style={styles.header}>Hello, Devs</Text>
-          <Image
-            source={require('./assets/person.png')}
-            style={styles.headerImage}
-          />
+          <View style={styles.imageWrapper}>
+            <Image source={require('./assets/person.png')} style={styles.headerImage} />
+          </View>
         </View>
         <Text style={styles.taskCountText}>14 tasks today</Text>
         <View style={styles.searchContainer}>
           <View style={styles.searchBar}>
-            <TextInput
-              placeholder="Search"
-              style={styles.searchInput}
-            />
+            <TextInput placeholder="Search" style={styles.searchInput} />
           </View>
-          <Image
-            source={require('./assets/Filter.png')}
-            style={styles.filterIcon}
-          />
+          <Image source={require('./assets/Filter.png')} style={styles.filterIcon} />
+        </View>
+        <Text style={styles.categoriesText}>Categories</Text>
+        <View style={styles.imageRow}>
+          <View style={styles.imageBox}>
+            <Image source={categories[0].icon} style={styles.fullScreenImage} resizeMode="contain" />
+          </View>
+          <View style={styles.imageBox}>
+            <Image source={categories[1].icon} style={styles.fullScreenImage} resizeMode="contain" />
+          </View>
         </View>
         <FlatList
-          data={categories}
-          renderItem={({ item }) => <Text style={styles.category}>{item}</Text>}
-          keyExtractor={(item, index) => index.toString()}
-          horizontal
+          data={categories.slice(2)}
+          renderItem={({ item }) => (
+            <View style={styles.categoryItem}>
+             
+            </View>
+          )}
+          keyExtractor={(item) => item.id}
+          numColumns={2}
+          columnWrapperStyle={styles.categoryListColumn}
           style={styles.categoryList}
         />
+        <Text style={styles.workLoad}>Ongoing Tasks</Text>
         <TaskList tasks={tasks} />
       </ScrollView>
     </View>
@@ -75,13 +95,18 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
   },
+  imageWrapper: {
+    width: 54,
+    height: 54,
+    borderRadius: 27,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   headerImage: {
     width: 52,
     height: 52,
     borderRadius: 26,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   taskCountText: {
     fontSize: 18,
@@ -110,15 +135,49 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
+  categoriesText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
   categoryList: {
     marginVertical: 20,
   },
-  category: {
-    marginHorizontal: 10,
+  categoryListColumn: {
+    justifyContent: 'space-between',
+  },
+  categoryItem: {
+    alignItems: 'center',
+    marginBottom: 20,
+    flex: 1,
+  },
+  categoryName: {
     fontSize: 18,
-    backgroundColor: '#ddd',
-    padding: 5,
-    borderRadius: 5,
+    textAlign: 'center',
+  },
+  workLoad: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  imageRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  imageBox: {
+    width: '48%',
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  fullScreenImage: {
+    width: '100%',
+    height: undefined,
+    aspectRatio: 1,
+    borderRadius: 10,
   },
 });
 
