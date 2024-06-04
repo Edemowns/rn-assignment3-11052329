@@ -12,4 +12,3 @@ This application helps you manage your tasks across different categories such as
 
 ### Screenshots
 ![Screenshot 1](./Create React Native Project - Google Chrome 6_2_2024 11_44_09 AM.png)
-
