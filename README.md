@@ -11,4 +11,4 @@ This application helps you manage your tasks across different categories such as
 - **Usage**: Renders the list of tasks with their respective categories and icons.
 
 ### Screenshots
-![Screenshot 1](./Create React Native Project - Google Chrome 6_2_2024 11_44_09 AM.png)
+![Screenshot 1](./rn-assignment3-11052329/Create React Native Project - Google Chrome 6_2_2024 11_44_09 AM.png)
